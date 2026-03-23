@@ -59,39 +59,63 @@
         <button class="filter-tab active" data-filter="all">All Products</button>
         <button class="filter-tab" data-filter="drive">Drive Recovery</button>
         <button class="filter-tab" data-filter="media">Media Recovery</button>
-        <button class="filter-tab" data-filter="enterprise">Enterprise</button>
-        <button class="filter-tab" data-filter="cloud">Cloud &amp; Backup</button>
+        <button class="filter-tab" data-filter="file">File Recovery</button>
+        <button class="filter-tab" data-filter="utility">Utilities</button>
       </div>
 
       <!-- Products Grid -->
       <div class="products-grid">
 
-        <!-- 1. DataGenius Pro Recovery Suite -->
-        <div class="product-card reveal reveal-delay-1" data-category="drive">
-          <div class="product-card-img" style="background:linear-gradient(135deg,#EFF6FF,#DBEAFE);">
-            <svg viewBox="0 0 24 24" fill="#2563EB">
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/>
+        <!-- 1. Disc Wipe -->
+        <div class="product-card reveal reveal-delay-1" data-category="utility">
+          <div class="product-card-img" style="background:linear-gradient(135deg,#FFF1F2,#FFE4E6);">
+            <svg viewBox="0 0 24 24" fill="#EF4444">
+              <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/>
             </svg>
-            <span class="badge-hot">Best Seller</span>
+            <span class="badge-hot">Popular</span>
           </div>
           <div class="product-card-body">
-            <h3>DataGenius Pro Recovery Suite</h3>
-            <p>The ultimate all-in-one recovery solution. Recovers deleted files, formatted drives, corrupted partitions, and lost data from any storage device. Supports 500+ file formats including photos, videos, documents, archives, and databases.</p>
+            <h3>Disc Wipe</h3>
+            <p>Permanently and securely erase all data from HDDs, SSDs, USB drives, and memory cards. Meets DoD 5220.22-M, NIST 800-88, and Gutmann standards to ensure data is irrecoverable.</p>
             <ul style="margin:.75rem 0;padding-left:1.25rem;font-size:.875rem;color:var(--muted);">
-              <li style="margin-bottom:.3rem;">&#10003;&nbsp; HDD, SSD, NVMe, USB, SD card support</li>
-              <li style="margin-bottom:.3rem;">&#10003;&nbsp; NTFS, FAT32, exFAT, APFS, ext4</li>
-              <li style="margin-bottom:.3rem;">&#10003;&nbsp; Preview before recovery</li>
-              <li>&#10003;&nbsp; Windows &amp; macOS compatible</li>
+              <li style="margin-bottom:.3rem;">&#10003;&nbsp; DoD, NIST &amp; Gutmann wipe standards</li>
+              <li style="margin-bottom:.3rem;">&#10003;&nbsp; HDD, SSD, USB &amp; SD card support</li>
+              <li style="margin-bottom:.3rem;">&#10003;&nbsp; Wipe certificate generation</li>
+              <li>&#10003;&nbsp; Batch multi-drive wiping</li>
             </ul>
             <div class="product-card-footer">
-              <div class="price"><sup>$</sup>99</div>
+              <div class="price"><sup>$</sup>39</div>
               <a href="contact.html" class="btn btn-primary btn-sm">Buy Now</a>
             </div>
           </div>
         </div>
 
-        <!-- 2. USB / Drive Recovery -->
+        <!-- 2. HDD/SSD Data Recovery -->
         <div class="product-card reveal reveal-delay-2" data-category="drive">
+          <div class="product-card-img" style="background:linear-gradient(135deg,#EFF6FF,#DBEAFE);">
+            <svg viewBox="0 0 24 24" fill="#2563EB">
+              <path d="M20 13H4c-.55 0-1 .45-1 1v6c0 .55.45 1 1 1h16c.55 0 1-.45 1-1v-6c0-.55-.45-1-1-1zm-2 5h-2v-2h2v2zm0-9H4c-.55 0-1 .45-1 1v6c0 .55.45 1 1 1h16c.55 0 1-.45 1-1V9c0-.55-.45-1-1-1zm-2 5h-2v-2h2v2zM20 3H4c-.55 0-1 .45-1 1v6c0 .55.45 1 1 1h16c.55 0 1-.45 1-1V4c0-.55-.45-1-1-1zm-2 5h-2V6h2v2z"/>
+            </svg>
+            <span class="badge-hot">Best Seller</span>
+          </div>
+          <div class="product-card-body">
+            <h3>HDD / SSD Data Recovery</h3>
+            <p>Recover deleted, formatted, or lost data from internal and external hard drives and solid-state drives. Deep-scan technology supports all major file systems and 500+ file formats.</p>
+            <ul style="margin:.75rem 0;padding-left:1.25rem;font-size:.875rem;color:var(--muted);">
+              <li style="margin-bottom:.3rem;">&#10003;&nbsp; NTFS, FAT32, exFAT, APFS, ext4</li>
+              <li style="margin-bottom:.3rem;">&#10003;&nbsp; Deleted, formatted &amp; corrupted partitions</li>
+              <li style="margin-bottom:.3rem;">&#10003;&nbsp; Preview before recovery</li>
+              <li>&#10003;&nbsp; Windows &amp; macOS compatible</li>
+            </ul>
+            <div class="product-card-footer">
+              <div class="price"><sup>$</sup>79</div>
+              <a href="contact.html" class="btn btn-primary btn-sm">Buy Now</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. USB/SD Card Data Recovery -->
+        <div class="product-card reveal reveal-delay-3" data-category="drive">
           <div class="product-card-img" style="background:linear-gradient(135deg,#F0FDF4,#DCFCE7);">
             <svg viewBox="0 0 24 24" fill="#10B981">
               <path d="M15 7v4h1v2h-3V5h2l-3-4-3 4h2v8H8v-2.07c.7-.37 1.2-1.08 1.2-1.93C9.2 7.75 8.45 7 7.5 7S5.8 7.75 5.8 8.99c0 .85.5 1.56 1.2 1.93V13c0 1.1.9 2 2 2h3v3.05c-.71.37-1.2 1.1-1.2 1.95 0 1.24.75 2 1.7 2s1.7-.76 1.7-2c0-.85-.49-1.58-1.2-1.95V15h3c1.1 0 2-.9 2-2v-2h1V7h-4z"/>
@@ -99,10 +123,10 @@
             <span class="badge-new">New</span>
           </div>
           <div class="product-card-body">
-            <h3>USB &amp; Drive Recovery Tool</h3>
-            <p>Purpose-built for USB flash drives, SD cards, CF cards, and external hard drives. Lightning-fast scan engine recovers photos, videos, and documents in minutes.</p>
+            <h3>USB / SD Card Data Recovery</h3>
+            <p>Purpose-built for USB flash drives, SD cards, microSD, CF cards, and external drives. Quickly recovers photos, videos, and documents after accidental deletion or formatting.</p>
             <ul style="margin:.75rem 0;padding-left:1.25rem;font-size:.875rem;color:var(--muted);">
-              <li style="margin-bottom:.3rem;">&#10003;&nbsp; Supports USB 2.0 / 3.0 / 3.1</li>
+              <li style="margin-bottom:.3rem;">&#10003;&nbsp; USB 2.0 / 3.0 / 3.1 support</li>
               <li style="margin-bottom:.3rem;">&#10003;&nbsp; SD, microSD, CF, XD card support</li>
               <li style="margin-bottom:.3rem;">&#10003;&nbsp; Quick &amp; deep scan modes</li>
               <li>&#10003;&nbsp; Portable – no installation needed</li>
@@ -114,53 +138,30 @@
           </div>
         </div>
 
-        <!-- 3. RAID Recovery Toolkit -->
-        <div class="product-card reveal reveal-delay-3" data-category="enterprise">
+        <!-- 4. Screen Record with Logging Steps -->
+        <div class="product-card reveal reveal-delay-1" data-category="utility">
           <div class="product-card-img" style="background:linear-gradient(135deg,#FDF4FF,#F3E8FF);">
             <svg viewBox="0 0 24 24" fill="#8B5CF6">
-              <path d="M20 6h-8l-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6 10H6v-2h8v2zm4-4H6v-2h12v2z"/>
+              <path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/>
             </svg>
           </div>
           <div class="product-card-body">
-            <h3>RAID Recovery Toolkit</h3>
-            <p>Enterprise-grade reconstruction for all major RAID levels. Intelligently detects array parameters and rebuilds logical volumes from failed or degraded arrays, including NAS devices.</p>
+            <h3>Screen Record with Logging Steps</h3>
+            <p>Record your screen while automatically logging every action, click, and keystroke to a structured step-by-step report. Ideal for documenting recovery procedures, bug reproduction, and training.</p>
             <ul style="margin:.75rem 0;padding-left:1.25rem;font-size:.875rem;color:var(--muted);">
-              <li style="margin-bottom:.3rem;">&#10003;&nbsp; RAID 0, 1, 5, 6, 10 &amp; JBOD</li>
-              <li style="margin-bottom:.3rem;">&#10003;&nbsp; Synology, QNAP, Netgear NAS</li>
-              <li style="margin-bottom:.3rem;">&#10003;&nbsp; Automated parameter detection</li>
-              <li>&#10003;&nbsp; Forensic-grade imaging mode</li>
+              <li style="margin-bottom:.3rem;">&#10003;&nbsp; HD screen capture with audio</li>
+              <li style="margin-bottom:.3rem;">&#10003;&nbsp; Automatic click &amp; keystroke logging</li>
+              <li style="margin-bottom:.3rem;">&#10003;&nbsp; Exportable PDF / HTML step report</li>
+              <li>&#10003;&nbsp; Timestamped action annotations</li>
             </ul>
             <div class="product-card-footer">
-              <div class="price"><sup>$</sup>149</div>
+              <div class="price"><sup>$</sup>29</div>
               <a href="contact.html" class="btn btn-primary btn-sm">Buy Now</a>
             </div>
           </div>
         </div>
 
-        <!-- 4. Cloud Backup Restorer -->
-        <div class="product-card reveal reveal-delay-1" data-category="cloud">
-          <div class="product-card-img" style="background:linear-gradient(135deg,#F0F9FF,#E0F2FE);">
-            <svg viewBox="0 0 24 24" fill="#0EA5E9">
-              <path d="M19.35 10.04A7.49 7.49 0 0 0 12 4C9.11 4 6.6 5.64 5.35 8.04A5.994 5.994 0 0 0 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/>
-            </svg>
-          </div>
-          <div class="product-card-body">
-            <h3>Cloud Backup Restorer</h3>
-            <p>Recover data from corrupted or accidentally deleted cloud backups. Supports all major cloud providers with end-to-end encrypted processing.</p>
-            <ul style="margin:.75rem 0;padding-left:1.25rem;font-size:.875rem;color:var(--muted);">
-              <li style="margin-bottom:.3rem;">&#10003;&nbsp; Google Drive, Dropbox, OneDrive</li>
-              <li style="margin-bottom:.3rem;">&#10003;&nbsp; AWS S3 &amp; Azure Blob support</li>
-              <li style="margin-bottom:.3rem;">&#10003;&nbsp; Version history recovery</li>
-              <li>&#10003;&nbsp; Batch restore capabilities</li>
-            </ul>
-            <div class="product-card-footer">
-              <div class="price"><sup>$</sup>79</div>
-              <a href="contact.html" class="btn btn-primary btn-sm">Buy Now</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- 5. Photo & Video Recovery -->
+        <!-- 5. Corrupt Photo Recovery -->
         <div class="product-card reveal reveal-delay-2" data-category="media">
           <div class="product-card-img" style="background:linear-gradient(135deg,#FFF7ED,#FFEDD5);">
             <svg viewBox="0 0 24 24" fill="#F97316">
@@ -169,13 +170,13 @@
             <span class="badge-new">Popular</span>
           </div>
           <div class="product-card-body">
-            <h3>Photo &amp; Video Recovery</h3>
-            <p>Specialized recovery for photos and videos from cameras, drones, phones, and memory cards. Supports RAW formats from all major camera brands.</p>
+            <h3>Corrupt Photo Recovery</h3>
+            <p>Repair and recover damaged, corrupted, or partially overwritten photos. Restores broken JPEG, PNG, RAW, and HEIC files from any source including cameras, drones, and memory cards.</p>
             <ul style="margin:.75rem 0;padding-left:1.25rem;font-size:.875rem;color:var(--muted);">
-              <li style="margin-bottom:.3rem;">&#10003;&nbsp; JPEG, PNG, RAW, TIFF, HEIC</li>
-              <li style="margin-bottom:.3rem;">&#10003;&nbsp; MP4, MOV, AVI, MKV, 4K video</li>
-              <li style="margin-bottom:.3rem;">&#10003;&nbsp; Canon, Nikon, Sony RAW support</li>
-              <li>&#10003;&nbsp; AI-powered photo enhancement</li>
+              <li style="margin-bottom:.3rem;">&#10003;&nbsp; JPEG, PNG, TIFF, HEIC, WebP repair</li>
+              <li style="margin-bottom:.3rem;">&#10003;&nbsp; Canon, Nikon, Sony RAW formats</li>
+              <li style="margin-bottom:.3rem;">&#10003;&nbsp; AI-powered pixel reconstruction</li>
+              <li>&#10003;&nbsp; Batch repair hundreds of photos</li>
             </ul>
             <div class="product-card-footer">
               <div class="price"><sup>$</sup>39</div>
@@ -184,24 +185,71 @@
           </div>
         </div>
 
-        <!-- 6. Database Recovery Master -->
-        <div class="product-card reveal reveal-delay-3" data-category="enterprise">
-          <div class="product-card-img" style="background:linear-gradient(135deg,#FFF1F2,#FFE4E6);">
-            <svg viewBox="0 0 24 24" fill="#EF4444">
-              <path d="M20 13H4c-.55 0-1 .45-1 1v6c0 .55.45 1 1 1h16c.55 0 1-.45 1-1v-6c0-.55-.45-1-1-1zm-2 5h-2v-2h2v2zm0-9H4c-.55 0-1 .45-1 1v6c0 .55.45 1 1 1h16c.55 0 1-.45 1-1V9c0-.55-.45-1-1-1zm-2 5h-2v-2h2v2zM20 3H4c-.55 0-1 .45-1 1v6c0 .55.45 1 1 1h16c.55 0 1-.45 1-1V4c0-.55-.45-1-1-1zm-2 5h-2V6h2v2z"/>
+        <!-- 6. Corrupt Video Recovery -->
+        <div class="product-card reveal reveal-delay-3" data-category="media">
+          <div class="product-card-img" style="background:linear-gradient(135deg,#F0F9FF,#E0F2FE);">
+            <svg viewBox="0 0 24 24" fill="#0EA5E9">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/>
             </svg>
           </div>
           <div class="product-card-body">
-            <h3>Database Recovery Master</h3>
-            <p>Repair and recover data from corrupted, truncated, or accidentally dropped databases. The most comprehensive database recovery tool available for IT professionals.</p>
+            <h3>Corrupt Video Recovery</h3>
+            <p>Fix and restore unplayable, choppy, or broken video files. Repairs damaged MP4, MOV, AVI, MKV, and 4K video files from cameras, drones, dash cams, and action cameras.</p>
             <ul style="margin:.75rem 0;padding-left:1.25rem;font-size:.875rem;color:var(--muted);">
-              <li style="margin-bottom:.3rem;">&#10003;&nbsp; MySQL, PostgreSQL, SQLite</li>
-              <li style="margin-bottom:.3rem;">&#10003;&nbsp; MS SQL Server &amp; Oracle support</li>
-              <li style="margin-bottom:.3rem;">&#10003;&nbsp; Table &amp; index reconstruction</li>
-              <li>&#10003;&nbsp; Transaction log analysis</li>
+              <li style="margin-bottom:.3rem;">&#10003;&nbsp; MP4, MOV, AVI, MKV, 4K / 8K</li>
+              <li style="margin-bottom:.3rem;">&#10003;&nbsp; Drone, dash cam &amp; action cam support</li>
+              <li style="margin-bottom:.3rem;">&#10003;&nbsp; Audio &amp; subtitle stream repair</li>
+              <li>&#10003;&nbsp; Frame-by-frame reconstruction</li>
             </ul>
             <div class="product-card-footer">
-              <div class="price"><sup>$</sup>199</div>
+              <div class="price"><sup>$</sup>49</div>
+              <a href="contact.html" class="btn btn-primary btn-sm">Buy Now</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. Corrupt File Recovery -->
+        <div class="product-card reveal reveal-delay-1" data-category="file">
+          <div class="product-card-img" style="background:linear-gradient(135deg,#F0FDF4,#DCFCE7);">
+            <svg viewBox="0 0 24 24" fill="#10B981">
+              <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
+            </svg>
+          </div>
+          <div class="product-card-body">
+            <h3>Corrupt File Recovery</h3>
+            <p>Repair and restore corrupted documents, archives, spreadsheets, and other files. Recovers data from broken Word, Excel, PDF, ZIP, and many other file formats.</p>
+            <ul style="margin:.75rem 0;padding-left:1.25rem;font-size:.875rem;color:var(--muted);">
+              <li style="margin-bottom:.3rem;">&#10003;&nbsp; Word, Excel, PowerPoint repair</li>
+              <li style="margin-bottom:.3rem;">&#10003;&nbsp; PDF, ZIP, RAR extraction</li>
+              <li style="margin-bottom:.3rem;">&#10003;&nbsp; 300+ supported file formats</li>
+              <li>&#10003;&nbsp; Preview repaired file before saving</li>
+            </ul>
+            <div class="product-card-footer">
+              <div class="price"><sup>$</sup>59</div>
+              <a href="contact.html" class="btn btn-primary btn-sm">Buy Now</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8. CCTV Recovery -->
+        <div class="product-card reveal reveal-delay-2" data-category="media">
+          <div class="product-card-img" style="background:linear-gradient(135deg,#1E293B,#334155);">
+            <svg viewBox="0 0 24 24" fill="#94A3B8">
+              <path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/>
+            </svg>
+            <span class="badge-hot">Specialist</span>
+          </div>
+          <div class="product-card-body">
+            <h3>CCTV Recovery</h3>
+            <p>Specialized recovery tool for CCTV and DVR/NVR footage. Recovers deleted, overwritten, or corrupted security camera recordings from all major DVR brands and proprietary formats.</p>
+            <ul style="margin:.75rem 0;padding-left:1.25rem;font-size:.875rem;color:var(--muted);">
+              <li style="margin-bottom:.3rem;">&#10003;&nbsp; DVR, NVR &amp; IP camera support</li>
+              <li style="margin-bottom:.3rem;">&#10003;&nbsp; Hikvision, Dahua, Axis formats</li>
+              <li style="margin-bottom:.3rem;">&#10003;&nbsp; Recover overwritten footage</li>
+              <li>&#10003;&nbsp; Export to standard MP4 / AVI</li>
+            </ul>
+            <div class="product-card-footer">
+              <div class="price"><sup>$</sup>89</div>
               <a href="contact.html" class="btn btn-primary btn-sm">Buy Now</a>
             </div>
           </div>
@@ -224,51 +272,58 @@
           <thead>
             <tr style="background:var(--dark);color:white;">
               <th style="padding:1rem 1.25rem;text-align:left;border-radius:8px 0 0 0;">Feature</th>
-              <th style="padding:1rem .75rem;text-align:center;">Pro Suite<br><span style="font-weight:400;color:#94A3B8;">$99</span></th>
-              <th style="padding:1rem .75rem;text-align:center;">USB Tool<br><span style="font-weight:400;color:#94A3B8;">$49</span></th>
-              <th style="padding:1rem .75rem;text-align:center;">RAID Toolkit<br><span style="font-weight:400;color:#94A3B8;">$149</span></th>
-              <th style="padding:1rem .75rem;text-align:center;border-radius:0 8px 0 0;">DB Master<br><span style="font-weight:400;color:#94A3B8;">$199</span></th>
+              <th style="padding:1rem .75rem;text-align:center;">HDD/SSD Recovery<br><span style="font-weight:400;color:#94A3B8;">$79</span></th>
+              <th style="padding:1rem .75rem;text-align:center;">USB/SD Recovery<br><span style="font-weight:400;color:#94A3B8;">$49</span></th>
+              <th style="padding:1rem .75rem;text-align:center;">Photo Recovery<br><span style="font-weight:400;color:#94A3B8;">$39</span></th>
+              <th style="padding:1rem .75rem;text-align:center;">Video Recovery<br><span style="font-weight:400;color:#94A3B8;">$49</span></th>
+              <th style="padding:1rem .75rem;text-align:center;border-radius:0 8px 0 0;">CCTV Recovery<br><span style="font-weight:400;color:#94A3B8;">$89</span></th>
             </tr>
           </thead>
           <tbody>
             <tr style="background:var(--light);">
-              <td style="padding:.85rem 1.25rem;font-weight:500;color:var(--dark);">HDD / SSD Recovery</td>
-              <td style="padding:.85rem .75rem;text-align:center;color:#10B981;">&#10003;</td>
-              <td style="padding:.85rem .75rem;text-align:center;color:#10B981;">&#10003;</td>
-              <td style="padding:.85rem .75rem;text-align:center;color:#10B981;">&#10003;</td>
-              <td style="padding:.85rem .75rem;text-align:center;color:#EF4444;">&#10007;</td>
-            </tr>
-            <tr>
-              <td style="padding:.85rem 1.25rem;font-weight:500;color:var(--dark);">RAID Array Rebuild</td>
-              <td style="padding:.85rem .75rem;text-align:center;color:#EF4444;">&#10007;</td>
-              <td style="padding:.85rem .75rem;text-align:center;color:#EF4444;">&#10007;</td>
-              <td style="padding:.85rem .75rem;text-align:center;color:#10B981;">&#10003;</td>
-              <td style="padding:.85rem .75rem;text-align:center;color:#EF4444;">&#10007;</td>
-            </tr>
-            <tr style="background:var(--light);">
-              <td style="padding:.85rem 1.25rem;font-weight:500;color:var(--dark);">Database Repair</td>
-              <td style="padding:.85rem .75rem;text-align:center;color:#EF4444;">&#10007;</td>
-              <td style="padding:.85rem .75rem;text-align:center;color:#EF4444;">&#10007;</td>
-              <td style="padding:.85rem .75rem;text-align:center;color:#EF4444;">&#10007;</td>
-              <td style="padding:.85rem .75rem;text-align:center;color:#10B981;">&#10003;</td>
-            </tr>
-            <tr>
-              <td style="padding:.85rem 1.25rem;font-weight:500;color:var(--dark);">500+ File Formats</td>
+              <td style="padding:.85rem 1.25rem;font-weight:500;color:var(--dark);">HDD / SSD Support</td>
               <td style="padding:.85rem .75rem;text-align:center;color:#10B981;">&#10003;</td>
               <td style="padding:.85rem .75rem;text-align:center;color:#F97316;">Partial</td>
+              <td style="padding:.85rem .75rem;text-align:center;color:#EF4444;">&#10007;</td>
+              <td style="padding:.85rem .75rem;text-align:center;color:#EF4444;">&#10007;</td>
+              <td style="padding:.85rem .75rem;text-align:center;color:#EF4444;">&#10007;</td>
+            </tr>
+            <tr>
+              <td style="padding:.85rem 1.25rem;font-weight:500;color:var(--dark);">USB / SD Card Support</td>
+              <td style="padding:.85rem .75rem;text-align:center;color:#F97316;">Partial</td>
+              <td style="padding:.85rem .75rem;text-align:center;color:#10B981;">&#10003;</td>
+              <td style="padding:.85rem .75rem;text-align:center;color:#10B981;">&#10003;</td>
               <td style="padding:.85rem .75rem;text-align:center;color:#10B981;">&#10003;</td>
               <td style="padding:.85rem .75rem;text-align:center;color:#EF4444;">&#10007;</td>
             </tr>
             <tr style="background:var(--light);">
+              <td style="padding:.85rem 1.25rem;font-weight:500;color:var(--dark);">Corrupt File Repair</td>
+              <td style="padding:.85rem .75rem;text-align:center;color:#EF4444;">&#10007;</td>
+              <td style="padding:.85rem .75rem;text-align:center;color:#EF4444;">&#10007;</td>
+              <td style="padding:.85rem .75rem;text-align:center;color:#10B981;">&#10003;</td>
+              <td style="padding:.85rem .75rem;text-align:center;color:#10B981;">&#10003;</td>
+              <td style="padding:.85rem .75rem;text-align:center;color:#10B981;">&#10003;</td>
+            </tr>
+            <tr>
               <td style="padding:.85rem 1.25rem;font-weight:500;color:var(--dark);">Preview Before Recovery</td>
+              <td style="padding:.85rem .75rem;text-align:center;color:#10B981;">&#10003;</td>
               <td style="padding:.85rem .75rem;text-align:center;color:#10B981;">&#10003;</td>
               <td style="padding:.85rem .75rem;text-align:center;color:#10B981;">&#10003;</td>
               <td style="padding:.85rem .75rem;text-align:center;color:#10B981;">&#10003;</td>
               <td style="padding:.85rem .75rem;text-align:center;color:#F97316;">Limited</td>
             </tr>
+            <tr style="background:var(--light);">
+              <td style="padding:.85rem 1.25rem;font-weight:500;color:var(--dark);">Batch Processing</td>
+              <td style="padding:.85rem .75rem;text-align:center;color:#10B981;">&#10003;</td>
+              <td style="padding:.85rem .75rem;text-align:center;color:#10B981;">&#10003;</td>
+              <td style="padding:.85rem .75rem;text-align:center;color:#10B981;">&#10003;</td>
+              <td style="padding:.85rem .75rem;text-align:center;color:#F97316;">Limited</td>
+              <td style="padding:.85rem .75rem;text-align:center;color:#EF4444;">&#10007;</td>
+            </tr>
             <tr>
               <td style="padding:.85rem 1.25rem;font-weight:500;color:var(--dark);">24/7 Priority Support</td>
               <td style="padding:.85rem .75rem;text-align:center;color:#10B981;">&#10003;</td>
+              <td style="padding:.85rem .75rem;text-align:center;color:#EF4444;">&#10007;</td>
               <td style="padding:.85rem .75rem;text-align:center;color:#EF4444;">&#10007;</td>
               <td style="padding:.85rem .75rem;text-align:center;color:#10B981;">&#10003;</td>
               <td style="padding:.85rem .75rem;text-align:center;color:#10B981;">&#10003;</td>
@@ -316,12 +371,13 @@
         <div class="footer-col">
           <h4>Products</h4>
           <ul class="footer-links">
-            <li><a href="products.html">Pro Recovery Suite</a></li>
-            <li><a href="products.html">USB Recovery Tool</a></li>
-            <li><a href="products.html">RAID Toolkit</a></li>
-            <li><a href="products.html">Cloud Restorer</a></li>
-            <li><a href="products.html">Photo Recovery</a></li>
-            <li><a href="products.html">Database Recovery</a></li>
+            <li><a href="products.html">Disc Wipe</a></li>
+            <li><a href="products.html">HDD/SSD Recovery</a></li>
+            <li><a href="products.html">USB/SD Card Recovery</a></li>
+            <li><a href="products.html">Screen Record &amp; Logger</a></li>
+            <li><a href="products.html">Photo/Video Recovery</a></li>
+            <li><a href="products.html">Corrupt File Recovery</a></li>
+            <li><a href="products.html">CCTV Recovery</a></li>
           </ul>
         </div>
         <div class="footer-col">
