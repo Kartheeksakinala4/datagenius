@@ -237,6 +237,9 @@ section { padding: 5rem 0; }
 .hamburger.open span:nth-child(2) { opacity: 0; }
 .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
+/* Mobile nav — hidden by default, shown only on mobile via .open */
+.mobile-nav { display: none; }
+
 /* ---------- Hero Section ---------- */
 .hero {
   background: linear-gradient(135deg, var(--dark) 0%, var(--surface) 50%, #162035 100%);
