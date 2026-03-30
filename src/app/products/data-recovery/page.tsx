@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import type { Metadata } from 'next';
 
 const features = [
   { icon: '🔍', title: 'Deep Scan Technology', desc: 'Our proprietary deep scan engine searches every sector of your storage device to find files others miss.' },
