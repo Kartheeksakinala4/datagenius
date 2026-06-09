@@ -2,16 +2,16 @@ import type { Metadata } from 'next';
 import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import CookieBanner from '@/components/CookieBanner';
 
 export const metadata: Metadata = {
-  title: 'DataGenius — Data Recovery Software & Tools for India',
-  description: 'Free data recovery tools, expert guides, and professional-grade software trusted by 50,000+ users across India. Recover deleted files, fix corrupted data, and protect your storage.',
+  title: 'Data Genius — Professional Data Recovery Solutions, Hardware & Training',
+  description: 'Data Genius provides advanced data recovery tools, hardware solutions, technical expertise, and professional training for forensic investigators, data recovery specialists, law enforcement, and enterprises.',
+  keywords: 'data recovery, data recovery hardware, forensic data recovery, CCTV data recovery, data recovery training, professional data recovery tools',
   openGraph: {
-    title: 'DataGenius — Your Data. Recovered. Protected. Mastered.',
-    description: 'Free data recovery tools trusted by 50,000+ users across India.',
+    title: 'Data Genius — Professional Data Recovery Solutions',
+    description: 'Advanced data recovery tools, hardware, training and technical support for professionals.',
     url: 'https://datagenius.in',
-    siteName: 'DataGenius',
+    siteName: 'Data Genius',
     type: 'website',
   },
 };
@@ -23,13 +23,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
-      <body className="min-h-screen bg-surface-dark text-slate-100 flex flex-col antialiased font-sans">
+      <body className="min-h-screen text-silver-200 flex flex-col antialiased font-sans" style={{ backgroundColor: '#060f1f' }}>
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
-        <CookieBanner />
       </body>
     </html>
   );
 }
-

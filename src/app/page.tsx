@@ -3,26 +3,6 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 
-const stats = [
-  { value: 1000, suffix: '+', label: 'File Formats' },
-  { value: 50, suffix: '+', label: 'Storage Devices' },
-  { value: 10000, suffix: '+', label: 'Newsletter Subscribers' },
-  { value: 500, suffix: '+', label: 'Recovery Labs' },
-];
-
-const blogPosts = [
-  { slug: 'recover-data-dead-hard-drive', title: 'How to Recover Data from a Dead Hard Drive', category: 'Recovery Guides', readTime: '8 min read', date: 'Mar 15, 2026' },
-  { slug: 'hikvision-dvr-recovery-guide', title: 'Hikvision DVR Recovery: Complete 2026 Guide', category: 'CCTV Recovery', readTime: '12 min read', date: 'Mar 10, 2026' },
-  { slug: 'best-external-hard-drives-2026', title: 'Best External Hard Drives for Backup in 2026', category: 'Product Reviews', readTime: '6 min read', date: 'Mar 5, 2026' },
-  { slug: '3-2-1-backup-strategy', title: '3-2-1 Backup Strategy: The Only Guide You Need', category: 'Data Protection', readTime: '5 min read', date: 'Feb 28, 2026' },
-];
-
-const testimonials = [
-  { name: 'Sarah J.', role: 'Photographer', quote: 'Recovered 4 years of client photos I thought were gone. Incredible.' },
-  { name: 'Rajesh K.', role: 'IT Admin, Mumbai', quote: 'The CRM transformed how we run our lab. Case tracking is seamless.' },
-  { name: 'Priya S.', role: 'Data Recovery Lab Owner', quote: 'CCTV module is the only affordable tool that handles Hikvision footage.' },
-];
-
 function AnimatedCounter({ target, suffix }: { target: number; suffix: string }) {
   const [count, setCount] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
@@ -57,323 +37,717 @@ function AnimatedCounter({ target, suffix }: { target: number; suffix: string })
   return <span ref={ref}>{count.toLocaleString()}{suffix}</span>;
 }
 
+const stats = [
+  { value: 500, suffix: '+', label: 'Recovery Labs Served' },
+  { value: 50000, suffix: '+', label: 'Cases Resolved' },
+  { value: 150, suffix: '+', label: 'Hardware Products' },
+  { value: 30, suffix: '+', label: 'Countries Reached' },
+];
+
+const features = [
+  {
+    icon: (
+      <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+      </svg>
+    ),
+    title: 'Trusted by Law Enforcement',
+    desc: 'Our tools are used by forensic investigators and law enforcement agencies globally for evidence recovery.',
+  },
+  {
+    icon: (
+      <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+      </svg>
+    ),
+    title: 'Advanced Hardware Solutions',
+    desc: 'Professional-grade docking stations, enclosures, and diagnostic monitors built for intensive data recovery.',
+  },
+  {
+    icon: (
+      <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+      </svg>
+    ),
+    title: 'Professional Certification',
+    desc: 'Industry-recognized training programs for data recovery specialists and forensic professionals.',
+  },
+  {
+    icon: (
+      <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+      </svg>
+    ),
+    title: '24/7 Technical Support',
+    desc: 'Expert remote assistance, hardware troubleshooting, and firmware diagnostics from our certified engineers.',
+  },
+];
+
+const recoveryTools = [
+  {
+    id: 'logical',
+    icon: (
+      <svg className="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
+      </svg>
+    ),
+    title: 'Logical Data Recovery',
+    desc: 'Advanced software and techniques for recovering deleted, formatted, and corrupted data from any storage device.',
+    href: '/data-recovery-tools#logical',
+  },
+  {
+    id: 'cctv',
+    icon: (
+      <svg className="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 10l4.553-2.069A1 1 0 0121 8.82v6.36a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+      </svg>
+    ),
+    title: 'CCTV Data Recovery',
+    desc: 'Specialized recovery for DVR, NVR, CCTV surveillance systems, and video evidence extraction.',
+    href: '/data-recovery-tools#cctv',
+  },
+  {
+    id: 'usb-sata',
+    icon: (
+      <svg className="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+      </svg>
+    ),
+    title: 'USB to SATA Adapter',
+    desc: 'Professional-grade adapters for connecting SATA drives through USB interfaces for diagnostics and recovery.',
+    href: '/data-recovery-tools#usb-sata',
+  },
+  {
+    id: 'sd',
+    icon: (
+      <svg className="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V9l-6-6zM9 3v6h6M9 3l6 6" />
+      </svg>
+    ),
+    title: 'SD / microSD Pinouts',
+    desc: 'Technical reference guides, pinout diagrams, and recovery resources for damaged SD and microSD media.',
+    href: '/data-recovery-tools#sd-pinouts',
+  },
+];
+
+const hardwareProducts = [
+  {
+    icon: '🖥️',
+    title: 'Docking Stations',
+    desc: 'Multi-drive SATA/IDE docking with high-speed transfer capabilities.',
+    href: '/hardware-products#docking',
+  },
+  {
+    icon: '📦',
+    title: 'Moisture-Free Enclosures',
+    desc: 'Anti-humidity design for secure storage of sensitive recovery media.',
+    href: '/hardware-products#enclosures',
+  },
+  {
+    icon: '📊',
+    title: 'Hardware Monitors',
+    desc: 'Real-time SMART analysis and disk health monitoring systems.',
+    href: '/hardware-products#monitors',
+  },
+];
+
+const blogPosts = [
+  { slug: 'recover-data-dead-hard-drive', title: 'How to Recover Data from a Dead Hard Drive', category: 'Recovery Guides', date: 'Mar 15, 2026', readTime: '8 min' },
+  { slug: 'hikvision-dvr-recovery-guide', title: 'Hikvision DVR Recovery: Complete 2026 Guide', category: 'CCTV Recovery', date: 'Mar 10, 2026', readTime: '12 min' },
+  { slug: 'ssd-recovery-techniques', title: 'Advanced SSD Recovery Techniques', category: 'SSD Recovery', date: 'Mar 5, 2026', readTime: '10 min' },
+  { slug: 'digital-forensics-best-practices', title: 'Digital Forensics Best Practices 2026', category: 'Digital Forensics', date: 'Feb 28, 2026', readTime: '9 min' },
+];
+
+// SVG illustration of data recovery hardware
+const HeroIllustration = () => (
+  <div className="relative w-full max-w-lg mx-auto">
+    {/* Main workstation */}
+    <div
+      className="relative rounded-2xl p-6 animate-float"
+      style={{
+        background: 'linear-gradient(135deg, rgba(13, 31, 60, 0.9) 0%, rgba(10, 22, 40, 0.95) 100%)',
+        border: '1px solid rgba(33, 150, 243, 0.3)',
+        boxShadow: '0 20px 60px rgba(21, 101, 192, 0.2), inset 0 1px 0 rgba(33, 150, 243, 0.1)',
+      }}
+    >
+      {/* Monitor top bar */}
+      <div className="flex items-center gap-2 mb-4">
+        <div className="w-3 h-3 rounded-full bg-red-500 opacity-80" />
+        <div className="w-3 h-3 rounded-full bg-yellow-500 opacity-80" />
+        <div className="w-3 h-3 rounded-full bg-green-500 opacity-80" />
+        <div className="flex-1 h-5 rounded ml-2" style={{ backgroundColor: 'rgba(21, 101, 192, 0.2)' }} />
+      </div>
+      {/* Screen content */}
+      <div className="rounded-xl p-4 mb-4" style={{ backgroundColor: 'rgba(6, 15, 31, 0.8)', border: '1px solid rgba(30, 58, 95, 0.6)' }}>
+        <div className="text-xs font-mono mb-3" style={{ color: '#42a5f5' }}>DataGenius Recovery Suite v4.2</div>
+        <div className="space-y-2">
+          {[
+            { label: 'Drive Analysis', pct: 94, color: '#2196f3' },
+            { label: 'Sector Scan', pct: 71, color: '#42a5f5' },
+            { label: 'File Recovery', pct: 58, color: '#90caf9' },
+          ].map((item) => (
+            <div key={item.label}>
+              <div className="flex justify-between text-xs mb-1" style={{ color: '#64748b' }}>
+                <span>{item.label}</span>
+                <span style={{ color: item.color }}>{item.pct}%</span>
+              </div>
+              <div className="h-1.5 rounded-full" style={{ backgroundColor: 'rgba(30, 58, 95, 0.6)' }}>
+                <div
+                  className="h-full rounded-full"
+                  style={{ width: `${item.pct}%`, backgroundColor: item.color, boxShadow: `0 0 8px ${item.color}80` }}
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="mt-4 grid grid-cols-3 gap-2">
+          {[
+            { label: 'HDD', val: '3', icon: '💾' },
+            { label: 'SSD', val: '2', icon: '⚡' },
+            { label: 'SD', val: '5', icon: '📱' },
+          ].map((d) => (
+            <div key={d.label} className="text-center py-2 rounded-lg" style={{ backgroundColor: 'rgba(21, 101, 192, 0.1)' }}>
+              <div className="text-lg">{d.icon}</div>
+              <div className="text-xs font-bold text-white">{d.val}</div>
+              <div className="text-xs" style={{ color: '#475569' }}>{d.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+      {/* Drive slots */}
+      <div className="grid grid-cols-4 gap-2">
+        {[
+          { type: 'HDD', active: true },
+          { type: 'SSD', active: true },
+          { type: 'SD', active: false },
+          { type: 'USB', active: true },
+        ].map((slot, i) => (
+          <div
+            key={i}
+            className="rounded-lg py-2 px-1 text-center text-xs"
+            style={{
+              backgroundColor: slot.active ? 'rgba(21, 101, 192, 0.15)' : 'rgba(13, 31, 60, 0.6)',
+              border: `1px solid ${slot.active ? 'rgba(33, 150, 243, 0.3)' : 'rgba(30, 58, 95, 0.5)'}`,
+              color: slot.active ? '#90caf9' : '#475569',
+            }}
+          >
+            {slot.type}
+          </div>
+        ))}
+      </div>
+    </div>
+
+    {/* Floating badges */}
+    <div
+      className="absolute -top-4 -right-4 px-3 py-2 rounded-xl text-xs font-semibold"
+      style={{
+        backgroundColor: 'rgba(21, 101, 192, 0.9)',
+        border: '1px solid rgba(33, 150, 243, 0.5)',
+        color: 'white',
+        boxShadow: '0 8px 24px rgba(21, 101, 192, 0.4)',
+      }}
+    >
+      ✓ RAID Recovery
+    </div>
+    <div
+      className="absolute -bottom-4 -left-4 px-3 py-2 rounded-xl text-xs font-semibold"
+      style={{
+        backgroundColor: 'rgba(13, 31, 60, 0.95)',
+        border: '1px solid rgba(30, 58, 95, 0.9)',
+        color: '#90caf9',
+        boxShadow: '0 8px 24px rgba(0, 0, 0, 0.3)',
+      }}
+    >
+      🔒 Forensic Grade
+    </div>
+  </div>
+);
+
 export default function HomePage() {
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
 
   return (
     <div className="overflow-x-hidden">
-      {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center hero-mesh-bg overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-mesh" />
-          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent/15 rounded-full blur-3xl animate-mesh" style={{ animationDelay: '2s' }} />
+      {/* Hero */}
+      <section className="hero-bg relative min-h-screen flex items-center overflow-hidden">
+        {/* Animated background orbs */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <div
+            className="absolute animate-mesh"
+            style={{
+              top: '15%', left: '5%',
+              width: '500px', height: '500px',
+              background: 'radial-gradient(circle, rgba(21, 101, 192, 0.35) 0%, transparent 70%)',
+              filter: 'blur(40px)',
+            }}
+          />
+          <div
+            className="absolute animate-mesh"
+            style={{
+              bottom: '10%', right: '5%',
+              width: '400px', height: '400px',
+              background: 'radial-gradient(circle, rgba(13, 71, 161, 0.25) 0%, transparent 70%)',
+              filter: 'blur(40px)',
+              animationDelay: '3s',
+            }}
+          />
+          {/* Grid pattern */}
+          <div
+            className="absolute inset-0 opacity-5"
+            style={{
+              backgroundImage: 'linear-gradient(rgba(33, 150, 243, 0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(33, 150, 243, 0.5) 1px, transparent 1px)',
+              backgroundSize: '60px 60px',
+            }}
+          />
         </div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-24 text-center w-full">
-          <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-2 mb-6">
-            <span className="w-2 h-2 bg-accent rounded-full animate-pulse" />
-            <span className="text-sm text-slate-300">Trusted by 50,000+ users across India</span>
-          </div>
-          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-white mb-6 leading-tight">
-            Lost Your Data?{' '}
-            <span className="gradient-text">We&apos;ll Help</span>
-            <br />You Get It Back.
-          </h1>
-          <p className="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto mb-10">
-            Free data recovery tools, expert guides, and professional-grade software trusted by 50,000+ users across India.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-            <Link
-              href="/download/data-recovery"
-              className="inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-dark text-white font-semibold text-lg px-8 py-4 rounded-full transition-all hover:shadow-xl hover:shadow-accent/25 hover:-translate-y-0.5"
-            >
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-              </svg>
-              Download Free Recovery Tool
-            </Link>
-            <Link
-              href="/tools/recovery-advisor"
-              className="inline-flex items-center justify-center gap-2 border border-white/20 hover:border-white/40 text-white font-semibold text-lg px-8 py-4 rounded-full transition-all hover:bg-white/5"
-            >
-              Get AI Recovery Advice →
-            </Link>
-          </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-slate-400">
-            <span>Compatible with:</span>
-            {['Seagate', 'WD', 'Samsung', 'Toshiba', 'Hikvision', 'Dahua'].map((brand) => (
-              <span key={brand} className="bg-white/5 border border-white/10 rounded-lg px-3 py-1 text-slate-300">
-                {brand}
-              </span>
-            ))}
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-24 w-full">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            {/* Left content */}
+            <div>
+              <div
+                className="inline-flex items-center gap-2 rounded-full px-4 py-2 mb-8"
+                style={{ backgroundColor: 'rgba(21, 101, 192, 0.15)', border: '1px solid rgba(33, 150, 243, 0.25)' }}
+              >
+                <span className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: '#42a5f5' }} />
+                <span className="text-sm font-medium" style={{ color: '#90caf9' }}>
+                  Trusted by 500+ Recovery Labs & Law Enforcement
+                </span>
+              </div>
+
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+                Professional{' '}
+                <span className="gradient-text">Data Recovery</span>{' '}
+                Solutions, Hardware &amp; Training
+              </h1>
+
+              <p className="text-lg mb-10 leading-relaxed" style={{ color: '#94a3b8' }}>
+                Providing advanced data recovery tools, hardware solutions, technical expertise, and professional training for forensic investigators, data recovery specialists, law enforcement agencies, and enterprises.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4 mb-12">
+                <Link href="/data-recovery-tools" className="btn-primary inline-flex items-center justify-center gap-2 text-base">
+                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                  </svg>
+                  Explore Products
+                </Link>
+                <Link href="/contact" className="btn-outline inline-flex items-center justify-center gap-2 text-base">
+                  Contact Us
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </Link>
+              </div>
+
+              {/* Trust badges */}
+              <div className="flex flex-wrap items-center gap-3">
+                {[
+                  { label: 'ISO Certified', icon: '🏆' },
+                  { label: 'Forensic Grade', icon: '🔒' },
+                  { label: 'GDPR Compliant', icon: '✓' },
+                  { label: '24/7 Support', icon: '📞' },
+                ].map((badge) => (
+                  <div
+                    key={badge.label}
+                    className="flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-lg"
+                    style={{
+                      backgroundColor: 'rgba(13, 31, 60, 0.8)',
+                      border: '1px solid rgba(30, 58, 95, 0.8)',
+                      color: '#94a3b8',
+                    }}
+                  >
+                    <span>{badge.icon}</span>
+                    {badge.label}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right - Hero Illustration */}
+            <div className="hidden lg:block">
+              <HeroIllustration />
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="bg-surface-card border-y border-surface-border py-16">
+      {/* Stats */}
+      <section className="section-navy py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {stats.map((stat) => (
               <div key={stat.label} className="text-center">
-                <div className="text-3xl sm:text-4xl font-bold gradient-text mb-2">
+                <div className="text-4xl font-bold gradient-text mb-2">
                   <AnimatedCounter target={stat.value} suffix={stat.suffix} />
                 </div>
-                <p className="text-sm text-slate-400">{stat.label}</p>
+                <p className="text-sm" style={{ color: '#64748b' }}>{stat.label}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Products Section */}
-      <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-            Professional Recovery Software
-          </h2>
-          <p className="text-slate-400 text-lg max-w-2xl mx-auto">
-            Industry-grade tools built for data recovery professionals and everyday users alike.
-          </p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {[
-            {
-              title: 'DataGenius Data Recovery',
-              desc: 'Recover deleted files from any storage device',
-              badge: '1000+ formats',
-              icon: '💾',
-              ctaHref: '/download/data-recovery',
-              cta: 'Download Free',
-              price: '₹2,999 Pro',
-              priceHref: '/pricing',
-            },
-            {
-              title: 'DataGenius Repair Suite',
-              desc: 'Fix corrupted photos, videos, documents',
-              badge: 'Fix ANY file type',
-              icon: '🔧',
-              ctaHref: '/download/repair-suite',
-              cta: 'Download Free',
-              price: '₹1,999 Standard',
-              priceHref: '/pricing',
-            },
-            {
-              title: 'DataGenius Recovery CRM',
-              desc: 'Run your recovery lab like a pro',
-              badge: '14-day free trial',
-              icon: '📊',
-              ctaHref: '/products/recovery-crm',
-              cta: 'Start Free Trial',
-              price: null,
-              priceHref: null,
-            },
-          ].map((product) => (
-            <div
-              key={product.title}
-              className="glass-card rounded-2xl p-8 hover:border-white/20 transition-all hover:-translate-y-1"
-            >
-              <div className="text-4xl mb-4">{product.icon}</div>
-              <span className="text-xs font-semibold bg-primary/20 text-primary-light rounded-full px-3 py-1">
-                {product.badge}
-              </span>
-              <h3 className="text-xl font-bold text-white mt-4 mb-2">{product.title}</h3>
-              <p className="text-slate-400 text-sm mb-6">{product.desc}</p>
-              <div className="flex flex-col gap-3">
-                <Link
-                  href={product.ctaHref}
-                  className="inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-dark text-white text-sm font-semibold px-4 py-2.5 rounded-full transition-all"
+      {/* Features */}
+      <section className="section-dark py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-16">
+            <span className="badge badge-blue mb-4">Why Data Genius</span>
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+              Enterprise-Grade Data Recovery
+            </h2>
+            <p className="text-lg max-w-2xl mx-auto" style={{ color: '#64748b' }}>
+              Trusted by forensic investigators, law enforcement agencies, and enterprise IT teams worldwide.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {features.map((feature) => (
+              <div
+                key={feature.title}
+                className="silver-card rounded-2xl p-6 text-center"
+              >
+                <div
+                  className="w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-5"
+                  style={{ backgroundColor: 'rgba(21, 101, 192, 0.15)', color: '#42a5f5' }}
                 >
-                  {product.cta}
-                </Link>
-                {product.price && (
-                  <Link
-                    href={product.priceHref!}
-                    className="inline-flex items-center justify-center border border-white/20 hover:border-white/40 text-slate-300 hover:text-white text-sm font-medium px-4 py-2.5 rounded-full transition-all"
-                  >
-                    {product.price}
-                  </Link>
-                )}
+                  {feature.icon}
+                </div>
+                <h3 className="text-base font-semibold text-white mb-3">{feature.title}</h3>
+                <p className="text-sm leading-relaxed" style={{ color: '#64748b' }}>{feature.desc}</p>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Free Tools Section */}
-      <section className="bg-surface-card border-y border-surface-border py-24">
+      {/* Data Recovery Tools */}
+      <section className="section-navy py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-4">
-            <span className="text-xs font-semibold bg-accent/10 text-accent rounded-full px-4 py-2 uppercase tracking-wider">
-              No Download Required
-            </span>
+          <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between mb-12 gap-4">
+            <div>
+              <span className="badge badge-blue mb-3">Recovery Tools</span>
+              <h2 className="text-3xl sm:text-4xl font-bold text-white">Data Recovery Solutions</h2>
+            </div>
+            <Link
+              href="/data-recovery-tools"
+              className="text-sm font-medium transition-colors flex items-center gap-1.5"
+              style={{ color: '#42a5f5' }}
+            >
+              View All Tools
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Link>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white text-center mb-4">Free Online Tools</h2>
-          <p className="text-slate-400 text-center mb-16 max-w-2xl mx-auto">
-            Powerful utilities accessible directly in your browser — no installation needed.
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              { title: 'Storage Calculator', desc: 'Calculate exactly how much storage you need based on your files, photos, and videos.', href: '/tools/storage-calculator', icon: '🗄️' },
-              { title: 'AI Recovery Advisor', desc: 'Describe your data loss situation and get a step-by-step recovery plan powered by AI.', href: '/tools/recovery-advisor', icon: '🤖' },
-              { title: 'SMART Health Checker', desc: 'Paste your drive SMART data and get a plain-English health report.', href: '/tools/smart-checker', icon: '🩺' },
-            ].map((tool) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {recoveryTools.map((tool) => (
               <Link
-                key={tool.title}
+                key={tool.id}
                 href={tool.href}
-                className="group glass-card rounded-2xl p-8 hover:border-accent/30 transition-all hover:-translate-y-1"
+                className="silver-card rounded-2xl p-6 group"
               >
-                <div className="text-4xl mb-4">{tool.icon}</div>
-                <h3 className="text-xl font-bold text-white mb-2 group-hover:text-accent transition-colors">{tool.title}</h3>
-                <p className="text-slate-400 text-sm mb-4">{tool.desc}</p>
-                <span className="text-accent text-sm font-medium">Try Free →</span>
+                <div
+                  className="w-16 h-16 rounded-2xl flex items-center justify-center mb-5"
+                  style={{ backgroundColor: 'rgba(21, 101, 192, 0.12)', color: '#42a5f5', border: '1px solid rgba(33, 150, 243, 0.2)' }}
+                >
+                  {tool.icon}
+                </div>
+                <h3 className="text-base font-semibold text-white mb-2 group-hover:text-blue-300 transition-colors" style={{ ['--tw-text-opacity' as string]: '1' }}>
+                  {tool.title}
+                </h3>
+                <p className="text-sm leading-relaxed mb-4" style={{ color: '#64748b' }}>{tool.desc}</p>
+                <span className="text-xs font-semibold flex items-center gap-1" style={{ color: '#42a5f5' }}>
+                  Learn More
+                  <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </span>
               </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Blog Preview */}
-      <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="flex items-center justify-between mb-12">
-          <div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-2">Latest from the Blog</h2>
-            <p className="text-slate-400">Expert guides, tutorials, and recovery tips</p>
-          </div>
-          <Link href="/blog" className="hidden sm:flex items-center gap-2 text-primary-light hover:text-white transition-colors text-sm font-medium">
-            View all posts →
-          </Link>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {blogPosts.map((post) => (
-            <Link
-              key={post.slug}
-              href={`/blog/${post.slug}`}
-              className="group glass-card rounded-2xl overflow-hidden hover:border-white/20 transition-all hover:-translate-y-1"
-            >
-              <div className="h-40 bg-gradient-to-br from-primary/30 to-accent/10 flex items-center justify-center">
-                <span className="text-5xl">📖</span>
+      {/* Hardware Products */}
+      <section className="section-dark py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <span className="badge badge-silver mb-4">Hardware Products</span>
+              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
+                Professional Recovery Hardware
+              </h2>
+              <p className="text-lg mb-8" style={{ color: '#64748b' }}>
+                Purpose-built hardware solutions for data recovery professionals. From multi-drive docking stations to moisture-free enclosures.
+              </p>
+              <div className="space-y-4 mb-8">
+                {hardwareProducts.map((product) => (
+                  <Link
+                    key={product.title}
+                    href={product.href}
+                    className="flex items-start gap-4 p-4 rounded-xl transition-all group"
+                    style={{ backgroundColor: 'rgba(13, 31, 60, 0.6)', border: '1px solid rgba(30, 58, 95, 0.6)' }}
+                    onMouseEnter={(e) => (e.currentTarget.style.borderColor = 'rgba(33, 150, 243, 0.3)')}
+                    onMouseLeave={(e) => (e.currentTarget.style.borderColor = 'rgba(30, 58, 95, 0.6)')}
+                  >
+                    <span className="text-3xl">{product.icon}</span>
+                    <div>
+                      <h3 className="text-sm font-semibold text-white mb-1">{product.title}</h3>
+                      <p className="text-xs" style={{ color: '#64748b' }}>{product.desc}</p>
+                    </div>
+                    <svg className="w-4 h-4 ml-auto mt-0.5 flex-shrink-0 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" style={{ color: '#42a5f5' }}>
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </Link>
+                ))}
               </div>
-              <div className="p-5">
-                <span className="text-xs font-semibold text-accent">{post.category}</span>
-                <h3 className="text-sm font-semibold text-white mt-2 mb-3 leading-snug group-hover:text-primary-light transition-colors">
-                  {post.title}
-                </h3>
-                <div className="flex items-center justify-between text-xs text-slate-500">
-                  <span>{post.date}</span>
-                  <span>{post.readTime}</span>
+              <Link href="/hardware-products" className="btn-primary inline-flex items-center gap-2 text-sm">
+                Explore Hardware Products
+              </Link>
+            </div>
+            {/* Hardware visual */}
+            <div className="hidden lg:block">
+              <div
+                className="rounded-2xl p-8"
+                style={{ background: 'linear-gradient(135deg, rgba(13, 31, 60, 0.9), rgba(10, 22, 40, 0.95))', border: '1px solid rgba(30, 58, 95, 0.8)' }}
+              >
+                <div className="grid grid-cols-2 gap-4">
+                  {[
+                    { label: 'Docking Station', specs: 'SATA/IDE • USB 3.0 • 4-Bay', icon: '🖥️', status: 'In Stock' },
+                    { label: 'HD Enclosure', specs: 'IP67 • Anti-humidity • 2.5/3.5"', icon: '📦', status: 'In Stock' },
+                    { label: 'SMART Monitor', specs: 'Real-time • Multi-drive • Alerts', icon: '📊', status: 'In Stock' },
+                    { label: 'Write Blocker', specs: 'Forensic • Read-Only • Fast', icon: '🔒', status: 'Limited' },
+                  ].map((item) => (
+                    <div
+                      key={item.label}
+                      className="rounded-xl p-4"
+                      style={{ backgroundColor: 'rgba(21, 101, 192, 0.08)', border: '1px solid rgba(33, 150, 243, 0.15)' }}
+                    >
+                      <span className="text-3xl block mb-3">{item.icon}</span>
+                      <h4 className="text-sm font-semibold text-white mb-1">{item.label}</h4>
+                      <p className="text-xs mb-2" style={{ color: '#64748b' }}>{item.specs}</p>
+                      <span
+                        className="text-xs font-medium px-2 py-0.5 rounded-full"
+                        style={{
+                          backgroundColor: item.status === 'In Stock' ? 'rgba(16, 185, 129, 0.1)' : 'rgba(245, 158, 11, 0.1)',
+                          color: item.status === 'In Stock' ? '#34d399' : '#f59e0b',
+                        }}
+                      >
+                        {item.status}
+                      </span>
+                    </div>
+                  ))}
                 </div>
               </div>
-            </Link>
-          ))}
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Newsletter Section */}
-      <section className="bg-gradient-to-br from-primary/20 to-accent/10 border-y border-surface-border py-24">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-          <span className="text-xs font-semibold bg-primary/20 text-primary-light rounded-full px-4 py-2 uppercase tracking-wider">
-            Data Pulse by DataGenius
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mt-6 mb-4">
-            Join 10,000+ Subscribers
-          </h2>
-          <p className="text-slate-400 mb-8 max-w-xl mx-auto">
-            Weekly recovery tips, storage news, product updates, and exclusive discounts delivered to your inbox.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto mb-10">
-            {subscribed ? (
-              <div className="flex-1 bg-accent/20 border border-accent/30 rounded-full px-6 py-3 text-accent text-center font-medium">
-                ✓ You&apos;re subscribed! Welcome aboard.
-              </div>
-            ) : (
-              <>
-                <input
-                  type="email"
-                  placeholder="Enter your email..."
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="flex-1 bg-white/5 border border-white/10 rounded-full px-6 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-primary/50 text-sm"
-                />
-                <button
-                  onClick={() => email && setSubscribed(true)}
-                  className="bg-accent hover:bg-accent-dark text-white font-semibold px-6 py-3 rounded-full transition-all text-sm"
-                >
-                  Subscribe
-                </button>
-              </>
-            )}
+      {/* Training & Support */}
+      <section className="section-navy py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-16">
+            <span className="badge badge-blue mb-4">Training & Support</span>
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+              Professional Certification Programs
+            </h2>
+            <p className="max-w-2xl mx-auto text-lg" style={{ color: '#64748b' }}>
+              Industry-recognized training from beginner to advanced levels. Certify your team and gain hands-on expertise.
+            </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
             {[
-              { title: 'Issue #47: SSD Endurance Deep Dive', date: 'Mar 20, 2026' },
-              { title: 'Issue #46: Windows 12 Recovery Guide', date: 'Mar 13, 2026' },
-              { title: 'Issue #45: Ransomware Prevention 2026', date: 'Mar 6, 2026' },
-            ].map((issue) => (
-              <div key={issue.title} className="glass-card rounded-xl p-4 text-left">
-                <p className="text-sm text-white font-medium leading-snug">{issue.title}</p>
-                <p className="text-xs text-slate-500 mt-1">{issue.date}</p>
+              {
+                level: 'Beginner',
+                badge: 'Foundation',
+                color: '#42a5f5',
+                courses: ['Storage Fundamentals', 'File Systems Overview', 'Recovery Basics', 'Data Triage'],
+                duration: '2 weeks',
+              },
+              {
+                level: 'Advanced',
+                badge: 'Professional',
+                color: '#2196f3',
+                courses: ['SSD Recovery', 'RAID Recovery', 'CCTV Recovery', 'Flash Media Recovery'],
+                duration: '4 weeks',
+                featured: true,
+              },
+              {
+                level: 'Expert',
+                badge: 'Certification',
+                color: '#1565c0',
+                courses: ['Forensic Investigation', 'Court-Ready Reports', 'Lab Management', 'Advanced Imaging'],
+                duration: '6 weeks',
+              },
+            ].map((course) => (
+              <div
+                key={course.level}
+                className={`silver-card rounded-2xl p-6 ${course.featured ? 'ring-2' : ''}`}
+                style={course.featured ? { ['--tw-ring-color' as string]: 'rgba(33, 150, 243, 0.4)' } : {}}
+              >
+                {course.featured && (
+                  <div
+                    className="text-xs font-bold uppercase tracking-wider text-center py-1.5 rounded-full mb-4"
+                    style={{ backgroundColor: 'rgba(21, 101, 192, 0.2)', color: '#90caf9' }}
+                  >
+                    Most Popular
+                  </div>
+                )}
+                <div
+                  className="inline-block badge mb-4"
+                  style={{ backgroundColor: `${course.color}20`, color: course.color, borderColor: `${course.color}30` }}
+                >
+                  {course.badge}
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">{course.level}</h3>
+                <p className="text-xs mb-4" style={{ color: '#64748b' }}>Duration: {course.duration}</p>
+                <ul className="space-y-2 mb-6">
+                  {course.courses.map((c) => (
+                    <li key={c} className="flex items-center gap-2 text-sm" style={{ color: '#94a3b8' }}>
+                      <svg className="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" style={{ color: course.color }}>
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                      {c}
+                    </li>
+                  ))}
+                </ul>
+                <Link href="/training-support" className="btn-outline w-full text-sm text-center block">
+                  View Curriculum
+                </Link>
               </div>
+            ))}
+          </div>
+          <div className="text-center">
+            <Link href="/training-support#support" className="btn-primary inline-flex items-center gap-2 text-sm">
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+              </svg>
+              Get Technical Support
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Blog */}
+      <section className="section-dark py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="flex items-end justify-between mb-12 gap-4">
+            <div>
+              <span className="badge badge-silver mb-3">Knowledge Base</span>
+              <h2 className="text-3xl sm:text-4xl font-bold text-white">Latest from the Blog</h2>
+            </div>
+            <Link
+              href="/blog"
+              className="hidden sm:flex items-center gap-1.5 text-sm font-medium transition-colors"
+              style={{ color: '#42a5f5' }}
+            >
+              View All Posts
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {blogPosts.map((post) => (
+              <Link
+                key={post.slug}
+                href={`/blog/${post.slug}`}
+                className="silver-card rounded-2xl overflow-hidden group"
+              >
+                <div
+                  className="h-36 flex items-center justify-center"
+                  style={{ background: 'linear-gradient(135deg, rgba(21, 101, 192, 0.2) 0%, rgba(13, 71, 161, 0.1) 100%)' }}
+                >
+                  <svg className="w-12 h-12" fill="none" viewBox="0 0 24 24" stroke="currentColor" style={{ color: 'rgba(66, 165, 245, 0.5)' }}>
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                </div>
+                <div className="p-5">
+                  <span className="text-xs font-semibold" style={{ color: '#42a5f5' }}>{post.category}</span>
+                  <h3 className="text-sm font-semibold text-white mt-2 mb-3 leading-snug group-hover:text-blue-300 transition-colors">
+                    {post.title}
+                  </h3>
+                  <div className="flex items-center justify-between text-xs" style={{ color: '#475569' }}>
+                    <span>{post.date}</span>
+                    <span>{post.readTime} read</span>
+                  </div>
+                </div>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">Trusted by Professionals</h2>
-          <p className="text-slate-400">What our users say about DataGenius</p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {testimonials.map((t) => (
-            <div key={t.name} className="glass-card rounded-2xl p-8">
-              <div className="flex gap-1 mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="w-4 h-4 text-amber fill-current" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                ))}
-              </div>
-              <blockquote className="text-slate-300 text-sm leading-relaxed mb-6">
-                &ldquo;{t.quote}&rdquo;
-              </blockquote>
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center text-primary-light font-bold text-sm">
-                  {t.name[0]}
-                </div>
-                <div>
-                  <p className="text-white text-sm font-semibold">{t.name}</p>
-                  <p className="text-slate-500 text-xs">{t.role}</p>
-                </div>
-              </div>
+      {/* Newsletter */}
+      <section className="section-navy py-20">
+        <div className="max-w-2xl mx-auto px-4 sm:px-6 text-center">
+          <span className="badge badge-blue mb-4">Newsletter</span>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mt-4 mb-4">
+            Stay Updated
+          </h2>
+          <p className="mb-8 text-lg" style={{ color: '#64748b' }}>
+            Get the latest data recovery tips, product updates, and technical guides delivered to your inbox.
+          </p>
+          {subscribed ? (
+            <div
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold"
+              style={{ backgroundColor: 'rgba(16, 185, 129, 0.1)', border: '1px solid rgba(16, 185, 129, 0.3)', color: '#34d399' }}
+            >
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              </svg>
+              You&apos;re subscribed! Welcome aboard.
             </div>
-          ))}
+          ) : (
+            <div className="flex flex-col sm:flex-row gap-3">
+              <input
+                type="email"
+                placeholder="Enter your email address..."
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="flex-1 text-sm px-5 py-3 rounded-full outline-none"
+                style={{
+                  backgroundColor: 'rgba(13, 31, 60, 0.8)',
+                  border: '1px solid rgba(30, 58, 95, 0.8)',
+                  color: '#e2e8f0',
+                }}
+                onFocus={(e) => (e.currentTarget.style.borderColor = 'rgba(33, 150, 243, 0.5)')}
+                onBlur={(e) => (e.currentTarget.style.borderColor = 'rgba(30, 58, 95, 0.8)')}
+              />
+              <button
+                onClick={() => email && setSubscribed(true)}
+                className="btn-primary text-sm px-6 py-3 whitespace-nowrap"
+              >
+                Subscribe
+              </button>
+            </div>
+          )}
         </div>
       </section>
 
       {/* Final CTA */}
-      <section className="bg-gradient-to-r from-primary/30 via-primary/20 to-accent/20 border-y border-surface-border py-20">
+      <section
+        className="py-20"
+        style={{
+          background: 'linear-gradient(135deg, rgba(21, 101, 192, 0.2) 0%, rgba(13, 31, 60, 0.4) 50%, rgba(6, 15, 31, 0.6) 100%)',
+          borderTop: '1px solid rgba(30, 58, 95, 0.6)',
+        }}
+      >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-            Start Recovering Your Data Today
+            Ready to Recover Your Critical Data?
           </h2>
-          <p className="text-slate-400 mb-8">
-            Free forever for basic recovery. No credit card required.
+          <p className="mb-8 text-lg" style={{ color: '#64748b' }}>
+            Speak with our data recovery experts today. Enterprise pricing available for labs and agencies.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/download/data-recovery"
-              className="inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-dark text-white font-semibold text-lg px-8 py-4 rounded-full transition-all hover:shadow-xl hover:shadow-accent/25"
-            >
-              Download Free — Windows 10/11
+            <Link href="/data-recovery-tools" className="btn-primary inline-flex items-center justify-center gap-2 text-base">
+              Explore Products
             </Link>
-            <Link
-              href="/tools/recovery-advisor"
-              className="inline-flex items-center justify-center gap-2 border border-white/20 hover:border-white/40 text-white font-semibold text-lg px-8 py-4 rounded-full transition-all hover:bg-white/5"
-            >
-              Talk to AI Advisor
+            <Link href="/contact" className="btn-outline inline-flex items-center justify-center gap-2 text-base">
+              Contact Us
             </Link>
           </div>
         </div>

@@ -1,69 +1,148 @@
-import type { Metadata } from 'next';
+'use client';
+
+import { useState } from 'react';
 import Link from 'next/link';
 
-export const metadata: Metadata = {
-  title: 'Blog — Data Recovery Guides & Storage Tips | DataGenius',
-  description: 'Expert data recovery guides, storage news, product reviews, and data protection tips. Learn how to recover deleted files, fix corrupted data, and prevent data loss.',
-  openGraph: {
-    title: 'DataGenius Blog — Data Recovery Knowledge Hub',
-    description: 'Expert guides, tutorials, and recovery tips from India\'s leading data recovery platform.',
-    url: 'https://datagenius.in/blog',
-    siteName: 'DataGenius',
-  },
-};
-
-const categories = ['All', 'Recovery Guides', 'CCTV Recovery', 'Product Reviews', 'Data Protection', 'Storage News', 'Industry Analysis'];
-
-const posts = [
-  { slug: 'recover-data-dead-hard-drive', title: 'How to Recover Data from a Dead Hard Drive', excerpt: 'Complete guide for diagnosing and recovering data from HDDs that won\'t spin up, click, or are undetected by your computer.', category: 'Recovery Guides', readTime: '8 min', date: 'Mar 15, 2026', featured: true },
-  { slug: 'hikvision-dvr-recovery-guide', title: 'Hikvision DVR Recovery: Complete 2026 Guide', excerpt: 'Step-by-step guide to recovering surveillance footage from Hikvision DVR systems with corrupted or damaged hard drives.', category: 'CCTV Recovery', readTime: '12 min', date: 'Mar 10, 2026', featured: false },
-  { slug: 'best-external-hard-drives-2026', title: 'Best External Hard Drives for Backup in 2026', excerpt: 'We tested 12 external hard drives. Here are the best options for backup at every price point, from ₹3,000 to ₹15,000.', category: 'Product Reviews', readTime: '6 min', date: 'Mar 5, 2026', featured: false },
-  { slug: '3-2-1-backup-strategy', title: '3-2-1 Backup Strategy: The Only Guide You Need', excerpt: 'The 3-2-1 rule is the gold standard for data protection. Learn how to implement it on any budget and never lose data again.', category: 'Data Protection', readTime: '5 min', date: 'Feb 28, 2026', featured: false },
-  { slug: 'smart-attributes-explained', title: 'SMART Attributes Explained: Know When Your Drive Is Dying', excerpt: 'A plain-English breakdown of every critical SMART attribute — what they mean, which ones to watch, and what values are dangerous.', category: 'Recovery Guides', readTime: '10 min', date: 'Feb 22, 2026', featured: false },
-  { slug: 'recover-formatted-sd-card', title: 'How to Recover Data from a Formatted SD Card', excerpt: 'Accidentally formatted your SD card? Don\'t panic. Here\'s exactly what to do — and what NOT to do — in the first 30 minutes.', category: 'Recovery Guides', readTime: '7 min', date: 'Feb 17, 2026', featured: false },
-  { slug: 'top-5-data-recovery-software-2026', title: 'Top 5 Data Recovery Software Compared (2026)', excerpt: 'We tested DataGenius, Recuva, Disk Drill, EaseUS, and TestDisk on identical failure scenarios. The results may surprise you.', category: 'Product Reviews', readTime: '14 min', date: 'Feb 10, 2026', featured: false },
-  { slug: 'ransomware-recovery', title: 'Ransomware Recovery: What To Do When Files Are Encrypted', excerpt: 'Your files are encrypted and attackers want ransom. Here\'s the decision tree: pay vs. recover — and your realistic options.', category: 'Data Protection', readTime: '9 min', date: 'Feb 5, 2026', featured: false },
-  { slug: 'dahua-nvr-recovery', title: 'Dahua NVR Data Recovery: Step-by-Step Guide', excerpt: 'How to recover footage from Dahua NVR systems using DHFS file system analysis. Covers XVR, NVR Lite, Pro, and Ultra models.', category: 'CCTV Recovery', readTime: '11 min', date: 'Jan 30, 2026', featured: false },
-  { slug: 'ssd-vs-hdd-reliability-2026', title: 'SSD vs HDD: Which Is More Reliable in 2026?', excerpt: 'Backblaze\'s 2025 failure data + our own 3-year study. The answer is more nuanced than you think — it depends on workload.', category: 'Storage News', readTime: '8 min', date: 'Jan 25, 2026', featured: false },
-  { slug: 'recover-corrupted-excel', title: 'How to Recover Corrupted Excel Files (5 Methods)', excerpt: 'Excel file won\'t open? Shows "file corrupted" error? Here are 5 methods ranked from free DIY to professional repair tools.', category: 'Recovery Guides', readTime: '6 min', date: 'Jan 20, 2026', featured: false },
-  { slug: 'cp-plus-dvr-recovery', title: 'CP Plus DVR Recovery: Complete Guide', excerpt: 'India\'s most popular CCTV brand uses a proprietary file system. Here\'s how to recover footage from CP Plus Indigo and Cosmic series.', category: 'CCTV Recovery', readTime: '9 min', date: 'Jan 15, 2026', featured: false },
-];
+const categories = ['All', 'Data Recovery Tips', 'SSD Recovery', 'CCTV Recovery', 'Digital Forensics', 'Hardware Reviews', 'Storage Technologies'];
 
 const categoryColors: Record<string, string> = {
-  'Recovery Guides': 'bg-blue-500/10 text-blue-400',
-  'CCTV Recovery': 'bg-purple-500/10 text-purple-400',
-  'Product Reviews': 'bg-amber/10 text-amber',
-  'Data Protection': 'bg-red-500/10 text-red-400',
-  'Storage News': 'bg-accent/10 text-accent',
-  'Industry Analysis': 'bg-slate-500/10 text-slate-400',
+  'Data Recovery Tips': '#2196f3',
+  'SSD Recovery': '#7c3aed',
+  'CCTV Recovery': '#059669',
+  'Digital Forensics': '#d97706',
+  'Hardware Reviews': '#dc2626',
+  'Storage Technologies': '#0284c7',
 };
 
+const posts = [
+  {
+    slug: 'recover-data-dead-hard-drive',
+    title: 'How to Recover Data from a Dead Hard Drive',
+    excerpt: 'Complete guide for diagnosing and recovering data from HDDs that won\'t spin up, click, or are undetected. Step-by-step from triage to professional lab options.',
+    category: 'Data Recovery Tips',
+    author: 'Ravi Sharma',
+    readTime: '8 min',
+    date: 'Mar 15, 2026',
+    featured: true,
+  },
+  {
+    slug: 'hikvision-dvr-recovery-guide',
+    title: 'Hikvision DVR Recovery: Complete 2026 Guide',
+    excerpt: 'Step-by-step guide to recovering surveillance footage from Hikvision DVR systems with corrupted or damaged drives.',
+    category: 'CCTV Recovery',
+    author: 'Priya Nair',
+    readTime: '12 min',
+    date: 'Mar 10, 2026',
+    featured: false,
+  },
+  {
+    slug: 'ssd-recovery-techniques',
+    title: 'Advanced SSD Recovery Techniques for 2026',
+    excerpt: 'Deep dive into SSD architecture, FTL layer analysis, wear leveling, and step-by-step recovery from failed NVMe and SATA SSDs.',
+    category: 'SSD Recovery',
+    author: 'Arjun Mehta',
+    readTime: '10 min',
+    date: 'Mar 5, 2026',
+    featured: false,
+  },
+  {
+    slug: 'digital-forensics-best-practices',
+    title: 'Digital Forensics Best Practices for 2026',
+    excerpt: 'Chain of custody, forensic imaging standards, evidence documentation, and court-admissible recovery procedures.',
+    category: 'Digital Forensics',
+    author: 'Kavitha Reddy',
+    readTime: '9 min',
+    date: 'Feb 28, 2026',
+    featured: false,
+  },
+  {
+    slug: 'best-docking-stations-2026',
+    title: 'Best Data Recovery Docking Stations in 2026',
+    excerpt: 'We tested 8 professional docking stations on identical failure scenarios. Head-to-head comparison on speed, compatibility, and forensic features.',
+    category: 'Hardware Reviews',
+    author: 'Suresh Kumar',
+    readTime: '11 min',
+    date: 'Feb 22, 2026',
+    featured: false,
+  },
+  {
+    slug: 'nand-flash-storage-explained',
+    title: 'NAND Flash Storage Explained: SLC, MLC, TLC & QLC',
+    excerpt: 'A deep technical explainer on NAND cell types, their reliability trade-offs, and what this means for data recovery professionals.',
+    category: 'Storage Technologies',
+    author: 'Ravi Sharma',
+    readTime: '7 min',
+    date: 'Feb 17, 2026',
+    featured: false,
+  },
+  {
+    slug: 'raid-recovery-guide',
+    title: 'RAID Recovery: Complete Step-by-Step Guide',
+    excerpt: 'Recovering data from failed RAID 0, 1, 5, and 6 arrays. Stripe size detection, member disk ordering, and reconstruction techniques.',
+    category: 'Data Recovery Tips',
+    author: 'Arjun Mehta',
+    readTime: '14 min',
+    date: 'Feb 10, 2026',
+    featured: false,
+  },
+  {
+    slug: 'dahua-nvr-recovery',
+    title: 'Dahua NVR Data Recovery: Step-by-Step',
+    excerpt: 'How to recover footage from Dahua NVR systems using DHFS file system analysis. Covers XVR, NVR Lite, Pro, and Ultra models.',
+    category: 'CCTV Recovery',
+    author: 'Priya Nair',
+    readTime: '11 min',
+    date: 'Feb 5, 2026',
+    featured: false,
+  },
+];
+
 export default function BlogPage() {
+  const [activeCategory, setActiveCategory] = useState('All');
+  const [email, setEmail] = useState('');
+  const [subscribed, setSubscribed] = useState(false);
+
   const featuredPost = posts.find((p) => p.featured)!;
-  const otherPosts = posts.filter((p) => !p.featured);
+  const filteredPosts = posts.filter((p) => {
+    if (activeCategory === 'All') return !p.featured;
+    return p.category === activeCategory && !p.featured;
+  });
 
   return (
-    <div className="min-h-screen bg-surface-dark">
+    <div style={{ backgroundColor: '#060f1f' }}>
       {/* Hero */}
-      <section className="border-b border-surface-border py-16 px-4">
-        <div className="max-w-7xl mx-auto">
+      <section
+        className="py-16"
+        style={{
+          background: 'linear-gradient(180deg, rgba(21, 101, 192, 0.12) 0%, rgba(6, 15, 31, 0) 100%)',
+          borderBottom: '1px solid rgba(30, 58, 95, 0.6)',
+        }}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-10">
-            <span className="inline-block bg-primary/10 text-primary-light rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-wider mb-4">
-              Knowledge Hub
+            <span
+              className="inline-block text-xs font-semibold uppercase tracking-wider px-4 py-2 rounded-full mb-6"
+              style={{ backgroundColor: 'rgba(21, 101, 192, 0.15)', border: '1px solid rgba(33, 150, 243, 0.25)', color: '#90caf9' }}
+            >
+              Knowledge Base
             </span>
-            <h1 className="text-3xl sm:text-5xl font-bold text-white mb-4">Data Recovery Blog</h1>
-            <p className="text-slate-400 text-lg max-w-2xl mx-auto">
-              Expert guides, storage news, product reviews, and recovery tips. Updated every week by data recovery professionals.
+            <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">Data Genius Blog</h1>
+            <p className="text-lg max-w-2xl mx-auto" style={{ color: '#94a3b8' }}>
+              Expert guides, technical tutorials, and recovery tips for data recovery professionals, forensic investigators, and storage specialists.
             </p>
           </div>
-          {/* Category Filter */}
           <div className="flex flex-wrap justify-center gap-2">
             {categories.map((cat) => (
-              <button key={cat} className={`px-4 py-2 rounded-full text-sm font-medium transition-all border ${
-                cat === 'All'
-                  ? 'bg-primary text-white border-primary'
-                  : 'border-surface-border text-slate-400 hover:border-primary/40 hover:text-white'
-              }`}>
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className="px-4 py-2 rounded-full text-sm font-medium transition-all"
+                style={{
+                  backgroundColor: activeCategory === cat ? '#1565c0' : 'rgba(13, 31, 60, 0.7)',
+                  border: `1px solid ${activeCategory === cat ? '#1565c0' : 'rgba(30, 58, 95, 0.7)'}`,
+                  color: activeCategory === cat ? 'white' : '#64748b',
+                }}
+              >
                 {cat}
               </button>
             ))}
@@ -71,84 +150,215 @@ export default function BlogPage() {
         </div>
       </section>
 
-      <div className="max-w-7xl mx-auto px-4 py-12">
-        <div className="lg:grid lg:grid-cols-3 lg:gap-10">
-          {/* Main Content */}
-          <div className="lg:col-span-2">
-            {/* Featured Post */}
-            <Link href={`/blog/${featuredPost.slug}`} className="group block glass-card rounded-2xl overflow-hidden hover:border-white/20 transition-all mb-8">
-              <div className="h-52 bg-gradient-to-br from-primary/40 to-accent/20 flex items-center justify-center relative">
-                <span className="text-7xl">💾</span>
-                <span className="absolute top-4 left-4 bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full">Featured</span>
-              </div>
-              <div className="p-6">
-                <span className={`text-xs font-semibold px-2 py-1 rounded-full ${categoryColors[featuredPost.category]}`}>{featuredPost.category}</span>
-                <h2 className="text-xl font-bold text-white mt-3 mb-2 group-hover:text-primary-light transition-colors">{featuredPost.title}</h2>
-                <p className="text-slate-400 text-sm leading-relaxed mb-4">{featuredPost.excerpt}</p>
-                <div className="flex items-center justify-between text-xs text-slate-500">
-                  <span>{featuredPost.date}</span>
-                  <span>{featuredPost.readTime} read</span>
-                </div>
-              </div>
-            </Link>
+      {/* Main */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-16">
+        <div className="lg:grid lg:grid-cols-3 lg:gap-12">
 
-            {/* Posts Grid */}
-            <div className="grid sm:grid-cols-2 gap-6">
-              {otherPosts.map((post) => (
-                <Link key={post.slug} href={`/blog/${post.slug}`} className="group glass-card rounded-2xl overflow-hidden hover:border-white/20 transition-all hover:-translate-y-1">
-                  <div className="h-36 bg-gradient-to-br from-surface-card to-surface-dark flex items-center justify-center text-4xl">
-                    {post.category === 'CCTV Recovery' ? '📷' : post.category === 'Product Reviews' ? '⭐' : post.category === 'Data Protection' ? '🛡️' : post.category === 'Storage News' ? '📰' : '🔍'}
+          {/* Main column */}
+          <div className="lg:col-span-2 space-y-8">
+            {/* Featured */}
+            {activeCategory === 'All' && (
+              <Link
+                href={`/blog/${featuredPost.slug}`}
+                className="group block rounded-3xl overflow-hidden transition-all"
+                style={{
+                  background: 'linear-gradient(135deg, rgba(13, 31, 60, 0.85) 0%, rgba(10, 22, 40, 0.9) 100%)',
+                  border: '1px solid rgba(30, 58, 95, 0.8)',
+                }}
+              >
+                <div className="flex flex-col sm:flex-row">
+                  <div
+                    className="sm:w-56 flex-shrink-0 flex items-center justify-center"
+                    style={{
+                      background: 'linear-gradient(135deg, rgba(21, 101, 192, 0.25) 0%, rgba(13, 71, 161, 0.15) 100%)',
+                      minHeight: '180px',
+                    }}
+                  >
+                    <svg className="w-16 h-16" fill="none" viewBox="0 0 24 24" stroke="currentColor" style={{ color: 'rgba(66, 165, 245, 0.4)' }}>
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                    </svg>
                   </div>
-                  <div className="p-5">
-                    <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${categoryColors[post.category] || 'bg-slate-500/10 text-slate-400'}`}>{post.category}</span>
-                    <h3 className="text-sm font-bold text-white mt-2 mb-2 leading-snug group-hover:text-primary-light transition-colors">{post.title}</h3>
-                    <p className="text-xs text-slate-500 leading-relaxed mb-3 line-clamp-2">{post.excerpt}</p>
-                    <div className="flex items-center justify-between text-xs text-slate-600">
-                      <span>{post.date}</span>
-                      <span>{post.readTime} read</span>
+                  <div className="flex-1 p-6">
+                    <div className="flex items-center gap-2 mb-3">
+                      <span
+                        className="text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-full"
+                        style={{
+                          backgroundColor: 'rgba(21, 101, 192, 0.15)',
+                          color: '#90caf9',
+                          border: '1px solid rgba(33, 150, 243, 0.25)',
+                        }}
+                      >
+                        Featured
+                      </span>
+                      <span className="text-xs font-semibold" style={{ color: categoryColors[featuredPost.category] }}>
+                        {featuredPost.category}
+                      </span>
+                    </div>
+                    <h2 className="text-xl font-bold text-white mb-3 group-hover:text-blue-300 transition-colors leading-snug">
+                      {featuredPost.title}
+                    </h2>
+                    <p className="text-sm leading-relaxed mb-4" style={{ color: '#64748b' }}>{featuredPost.excerpt}</p>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <div className="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold" style={{ backgroundColor: 'rgba(21, 101, 192, 0.2)', color: '#42a5f5' }}>
+                          {featuredPost.author[0]}
+                        </div>
+                        <span className="text-xs" style={{ color: '#475569' }}>{featuredPost.author} • {featuredPost.date} • {featuredPost.readTime} read</span>
+                      </div>
+                      <span className="text-xs font-semibold flex items-center gap-1" style={{ color: '#42a5f5' }}>
+                        Read More →
+                      </span>
                     </div>
                   </div>
-                </Link>
-              ))}
-            </div>
+                </div>
+              </Link>
+            )}
+
+            {/* Post list */}
+            {filteredPosts.map((post) => (
+              <Link
+                key={post.slug}
+                href={`/blog/${post.slug}`}
+                className="group flex flex-col sm:flex-row rounded-3xl overflow-hidden transition-all"
+                style={{
+                  background: 'linear-gradient(135deg, rgba(13, 31, 60, 0.8) 0%, rgba(10, 22, 40, 0.85) 100%)',
+                  border: '1px solid rgba(30, 58, 95, 0.7)',
+                }}
+              >
+                <div
+                  className="sm:w-48 flex-shrink-0 flex items-center justify-center"
+                  style={{
+                    background: `linear-gradient(135deg, ${categoryColors[post.category] || '#2196f3'}15 0%, rgba(6, 15, 31, 0.3) 100%)`,
+                    minHeight: '150px',
+                  }}
+                >
+                  <svg className="w-12 h-12" fill="none" viewBox="0 0 24 24" stroke="currentColor" style={{ color: `${categoryColors[post.category] || '#42a5f5'}60` }}>
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                </div>
+                <div className="flex-1 p-6">
+                  <span className="text-xs font-semibold mb-2 block" style={{ color: categoryColors[post.category] || '#42a5f5' }}>
+                    {post.category}
+                  </span>
+                  <h3 className="text-lg font-bold text-white mb-2 group-hover:text-blue-300 transition-colors leading-snug">
+                    {post.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed mb-4" style={{ color: '#64748b' }}>{post.excerpt}</p>
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs" style={{ color: '#475569' }}>{post.author} • {post.date} • {post.readTime} read</span>
+                    <span className="text-xs font-semibold hidden sm:block" style={{ color: '#42a5f5' }}>Read More →</span>
+                  </div>
+                </div>
+              </Link>
+            ))}
           </div>
 
           {/* Sidebar */}
-          <aside className="mt-10 lg:mt-0 space-y-6">
-            {/* Newsletter */}
-            <div className="glass-card rounded-2xl p-6">
-              <h3 className="font-bold text-white mb-2">📬 Data Pulse Newsletter</h3>
-              <p className="text-slate-400 text-sm mb-4">Weekly recovery tips & storage news. Join 10,000+ subscribers.</p>
-              <input type="email" placeholder="Your email..." className="w-full bg-surface-dark/50 border border-surface-border rounded-full px-4 py-2 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-primary/50 mb-3" />
-              <button className="w-full bg-accent hover:bg-accent-dark text-white text-sm font-semibold py-2.5 rounded-full transition-all">Subscribe Free</button>
-            </div>
+          <aside className="mt-12 lg:mt-0">
+            <div className="sidebar-sticky space-y-6">
 
-            {/* Popular Posts */}
-            <div className="glass-card rounded-2xl p-6">
-              <h3 className="font-bold text-white mb-4">🔥 Most Popular</h3>
-              <div className="space-y-4">
-                {posts.slice(0, 5).map((p, i) => (
-                  <Link key={p.slug} href={`/blog/${p.slug}`} className="flex gap-3 group">
-                    <span className="text-2xl font-bold text-surface-border flex-shrink-0 leading-none mt-0.5">0{i + 1}</span>
-                    <div>
-                      <p className="text-sm text-slate-300 group-hover:text-white transition-colors leading-snug">{p.title}</p>
-                      <p className="text-xs text-slate-500 mt-0.5">{p.readTime} read</p>
-                    </div>
-                  </Link>
-                ))}
+              {/* Newsletter */}
+              <div
+                className="rounded-2xl p-6"
+                style={{
+                  background: 'linear-gradient(135deg, rgba(21, 101, 192, 0.12) 0%, rgba(13, 31, 60, 0.85) 100%)',
+                  border: '1px solid rgba(33, 150, 243, 0.2)',
+                }}
+              >
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style={{ backgroundColor: 'rgba(21, 101, 192, 0.2)', color: '#42a5f5' }}>
+                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <h3 className="text-base font-bold text-white mb-2">Subscribe to Our Newsletter</h3>
+                <p className="text-sm mb-4" style={{ color: '#64748b' }}>
+                  Weekly recovery tips, technical guides, and product updates delivered to your inbox.
+                </p>
+                {subscribed ? (
+                  <div className="text-center py-3 rounded-xl text-sm font-medium" style={{ backgroundColor: 'rgba(16, 185, 129, 0.1)', color: '#34d399', border: '1px solid rgba(16, 185, 129, 0.2)' }}>
+                    ✓ Subscribed! Welcome.
+                  </div>
+                ) : (
+                  <div className="space-y-2">
+                    <input
+                      type="email"
+                      placeholder="your@email.com"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      className="w-full text-sm px-4 py-2.5 rounded-xl outline-none"
+                      style={{ backgroundColor: 'rgba(6, 15, 31, 0.6)', border: '1px solid rgba(30, 58, 95, 0.7)', color: '#e2e8f0' }}
+                    />
+                    <button
+                      onClick={() => email && setSubscribed(true)}
+                      className="w-full text-sm font-semibold py-2.5 rounded-xl"
+                      style={{ background: 'linear-gradient(135deg, #1565c0 0%, #1976d2 100%)', color: 'white' }}
+                    >
+                      Subscribe
+                    </button>
+                  </div>
+                )}
               </div>
-            </div>
 
-            {/* Categories */}
-            <div className="glass-card rounded-2xl p-6">
-              <h3 className="font-bold text-white mb-4">📂 Categories</h3>
-              <div className="space-y-2">
-                {categories.filter(c => c !== 'All').map((cat) => (
-                  <button key={cat} className="flex items-center justify-between w-full text-sm text-slate-400 hover:text-white transition-colors py-1 border-b border-surface-border/30 last:border-0">
-                    <span>{cat}</span>
-                    <span className="text-xs text-slate-600">{posts.filter(p => p.category === cat).length} posts</span>
-                  </button>
-                ))}
+              {/* Recent Posts */}
+              <div className="rounded-2xl p-6" style={{ background: 'rgba(13, 31, 60, 0.7)', border: '1px solid rgba(30, 58, 95, 0.7)' }}>
+                <h3 className="text-base font-bold text-white mb-5">Recent Posts</h3>
+                <div className="space-y-4">
+                  {posts.slice(0, 5).map((post) => (
+                    <Link key={post.slug} href={`/blog/${post.slug}`} className="flex items-start gap-3 group">
+                      <div className="w-10 h-10 rounded-lg flex-shrink-0 flex items-center justify-center" style={{ backgroundColor: `${categoryColors[post.category] || '#2196f3'}15` }}>
+                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" style={{ color: categoryColors[post.category] || '#42a5f5' }}>
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                      </div>
+                      <div>
+                        <p className="text-xs font-semibold text-white group-hover:text-blue-300 transition-colors leading-snug mb-0.5">{post.title}</p>
+                        <p className="text-xs" style={{ color: '#475569' }}>{post.date}</p>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              {/* Popular Articles */}
+              <div className="rounded-2xl p-6" style={{ background: 'rgba(13, 31, 60, 0.7)', border: '1px solid rgba(30, 58, 95, 0.7)' }}>
+                <h3 className="text-base font-bold text-white mb-5">Popular Articles</h3>
+                <div className="space-y-3">
+                  {posts.slice(2, 7).map((post, i) => (
+                    <Link key={post.slug} href={`/blog/${post.slug}`} className="flex items-center gap-3 group">
+                      <span className="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0" style={{ backgroundColor: 'rgba(21, 101, 192, 0.15)', color: '#42a5f5' }}>
+                        {i + 1}
+                      </span>
+                      <p className="text-xs font-medium text-white group-hover:text-blue-300 transition-colors leading-snug">{post.title}</p>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              {/* Categories */}
+              <div className="rounded-2xl p-6" style={{ background: 'rgba(13, 31, 60, 0.7)', border: '1px solid rgba(30, 58, 95, 0.7)' }}>
+                <h3 className="text-base font-bold text-white mb-5">Categories</h3>
+                <div className="space-y-2">
+                  {categories.slice(1).map((cat) => (
+                    <button
+                      key={cat}
+                      onClick={() => setActiveCategory(cat)}
+                      className="w-full flex items-center justify-between text-sm px-3 py-2 rounded-lg transition-all text-left"
+                      style={{
+                        backgroundColor: activeCategory === cat ? 'rgba(21, 101, 192, 0.15)' : 'transparent',
+                        color: activeCategory === cat ? '#90caf9' : '#64748b',
+                        border: `1px solid ${activeCategory === cat ? 'rgba(33, 150, 243, 0.25)' : 'transparent'}`,
+                      }}
+                    >
+                      <span className="flex items-center gap-2">
+                        <span className="w-2 h-2 rounded-full" style={{ backgroundColor: categoryColors[cat] || '#64748b' }} />
+                        {cat}
+                      </span>
+                      <span className="text-xs" style={{ color: '#475569' }}>
+                        {posts.filter((p) => p.category === cat).length}
+                      </span>
+                    </button>
+                  ))}
+                </div>
               </div>
             </div>
           </aside>
