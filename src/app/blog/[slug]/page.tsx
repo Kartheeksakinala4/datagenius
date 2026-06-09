@@ -1,6 +1,31 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
+const allSlugs = [
+  'recover-data-dead-hard-drive',
+  'hikvision-dvr-recovery-guide',
+  'best-external-hard-drives-2026',
+  '3-2-1-backup-strategy',
+  'smart-attributes-explained',
+  'recover-formatted-sd-card',
+  'top-5-data-recovery-software-2026',
+  'ransomware-recovery',
+  'dahua-nvr-recovery',
+  'ssd-vs-hdd-reliability-2026',
+  'recover-corrupted-excel',
+  'cp-plus-dvr-recovery',
+  'ssd-recovery-techniques',
+  'digital-forensics-best-practices',
+  'best-docking-stations-2026',
+  'nand-flash-storage-explained',
+  'raid-recovery-guide',
+  'dahua-nvr-recovery-guide',
+];
+
+export function generateStaticParams() {
+  return allSlugs.map((slug) => ({ slug }));
+}
+
 export const metadata: Metadata = {
   title: 'How to Recover Data from a Dead Hard Drive | DataGenius Blog',
   description: 'Complete step-by-step guide to recovering data from a dead hard drive. Diagnose the failure type, choose the right recovery method, and get your files back.',
