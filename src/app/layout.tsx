@@ -4,26 +4,27 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Data Genius — Professional Data Recovery Solutions, Hardware & Training',
-  description: 'Data Genius provides advanced data recovery tools, hardware solutions, technical expertise, and professional training for forensic investigators, data recovery specialists, law enforcement, and enterprises.',
-  keywords: 'data recovery, data recovery hardware, forensic data recovery, CCTV data recovery, data recovery training, professional data recovery tools',
+  title: 'DataGenius — Recovery · Storage · Preservation · Continuity',
+  description: 'DataGenius helps individuals, families, professionals, and businesses recover, preserve, protect, and maintain their valuable data. Trusted data continuity experts in Hyderabad.',
+  keywords: 'data recovery, home cloud, data preservation, backup, hard drive recovery, NAS setup, digital preservation, RAID recovery, data continuity, Hyderabad',
   openGraph: {
-    title: 'Data Genius — Professional Data Recovery Solutions',
-    description: 'Advanced data recovery tools, hardware, training and technical support for professionals.',
+    title: 'DataGenius — Your Data. Safe, Recoverable, and Future-Ready.',
+    description: 'From failed hard drives to home cloud setup and long-term digital preservation, DataGenius is your complete data continuity partner.',
     url: 'https://datagenius.in',
-    siteName: 'Data Genius',
+    siteName: 'DataGenius',
     type: 'website',
   },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
-      <body className="min-h-screen text-silver-200 flex flex-col antialiased font-sans" style={{ backgroundColor: '#060f1f' }}>
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+      </head>
+      <body className="min-h-screen flex flex-col antialiased">
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
