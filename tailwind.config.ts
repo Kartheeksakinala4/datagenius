@@ -10,56 +10,46 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        navy: {
-          950: '#020d1a',
-          900: '#060f1f',
-          800: '#0a1628',
-          700: '#0d1f3c',
-          600: '#122448',
-          500: '#1a3360',
-          400: '#234a8a',
-        },
-        blue: {
-          primary: '#1565c0',
-          light: '#2196f3',
-          bright: '#42a5f5',
-          pale: '#90caf9',
-        },
-        silver: {
-          100: '#f8fafc',
-          200: '#e2e8f0',
-          300: '#cbd5e1',
-          400: '#94a3b8',
-          500: '#64748b',
-          600: '#475569',
-        },
-        primary: {
-          DEFAULT: '#1565C0',
-          light: '#2196F3',
-          dark: '#0D47A1',
-        },
-        accent: {
-          DEFAULT: '#10B981',
-          dark: '#059669',
+        brand: {
+          50:  '#EFF6FF',
+          100: '#DBEAFE',
+          200: '#BFDBFE',
+          300: '#93C5FD',
+          400: '#60A5FA',
+          500: '#3B82F6',
+          600: '#2563EB',
+          700: '#1D4ED8',
+          800: '#1E40AF',
+          900: '#1E3A8A',
         },
         surface: {
-          dark: '#0a1628',
-          card: '#0d1f3c',
-          border: '#1e3a5f',
-          hover: '#12284a',
+          white: '#FFFFFF',
+          soft:  '#F8FAFC',
+          muted: '#F1F5F9',
+          border: '#E2E8F0',
         },
-        amber: '#F59E0B',
+        ink: {
+          900: '#0F172A',
+          700: '#1E293B',
+          500: '#334155',
+          400: '#475569',
+          300: '#64748B',
+          200: '#94A3B8',
+          100: '#CBD5E1',
+        },
+        success: { DEFAULT: '#059669', light: '#D1FAE5' },
+        warn:    { DEFAULT: '#D97706', light: '#FEF3C7' },
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
       },
-      backgroundImage: {
-        'hero-gradient': 'radial-gradient(ellipse at 15% 15%, rgba(21, 101, 192, 0.5) 0%, transparent 50%), radial-gradient(ellipse at 85% 85%, rgba(13, 71, 161, 0.3) 0%, transparent 50%)',
-        'card-gradient': 'linear-gradient(135deg, rgba(21, 101, 192, 0.1) 0%, rgba(10, 22, 40, 0) 100%)',
+      boxShadow: {
+        card:  '0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04)',
+        hover: '0 10px 30px rgba(30,64,175,.12), 0 4px 8px rgba(0,0,0,.06)',
+        blue:  '0 8px 24px rgba(30,64,175,.22)',
       },
     },
   },
   plugins: [],
 }
-
 export default config
